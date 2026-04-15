@@ -50,7 +50,12 @@ jobs:
             --name $AKS_CLUSTER_NAME \
             --overwrite-existing
 
+      - name: Update deployment image
+        run: |
+          sed -i "s|image: .*|image: $ACR_LOGIN_SERVER/$IMAGE_NAME:$IMAGE_TAG|g" k8s/deployment.yaml
+
       - name: Deploy to AKS
         run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl rollout status deployment/mynginx
+          kubectl get svc mynginx
