@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mynginx
-        image: razzaqac123.azurecr.io/mynginx:latest
+        image: razzaqac123.azurecr.io/mynginx:2
         ports:
         - containerPort: 80
 ---
